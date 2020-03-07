@@ -33,16 +33,39 @@ if [[ ! -f setup ]]; then
 fi
 
 # Check wheather software requirements are met
+echo 
+echo Some work...
 MISSING=false
 while read package; do
-	if [[ ! -z "$(pacman -Q $package | grep error)" ]]; then
-		echo "Should have... $package"
+	if [[ 0 -eq "$(pacman -Q $package | grep error | wc -l)" ]]; then
+		echo "[!]... $package"
 		MISSING=true
 	fi	
-done < package_list.txt
-if ( $MISSING ); then exit; fi
+done < package_list.txt 2>/dev/null
+if ( $MISSING ); then 
+	echo 
+	echo "Missing some packages..."
+	echo "Install them by pipeing the command into: awk '/[!]... / {print $NF}' | xargs sudo pacman -S"
+	exit
+fi
 
-ln -s $(pwd)/config/i3 $HOME/.config/i3
-ln -s $(pwd)/config/ranger $HOME/.config/ranger
-ln -s $(pwd)/config/polybar $HOME/.config/polybar
-ln -s $(pwd)/bin $HOME/bin
+# Deploy
+#if [[ -z "$(ln -s $(pwd)/Xresources $HOME/.Xresources)" ]]; then echo "You must want to check this...";  fi 
+#if [[ -z "$(ln -s $(pwd)/vimrc $HOME/.vimrc)" ]]; then echo "You must want to check this..." && exit;  fi
+#if [[ -z "$(ln -s $(pwd)/bash_aliases $HOME/.bash_aliases)" ]]; then echo "You must want to check this..." && exit;  fi
+#
+#if [[ -z "$(ln -s $(pwd)/config/i3 $HOME/.config/)" ]]; then echo "You must want to check this..." && exit;  fi
+#if [[ -z "$(ln -s $(pwd)/config/ranger $HOME/.config/)" ]]; then echo "You must want to check this..." && exit;  fi
+#if [[ -z "$(ln -s $(pwd)/config/polybar $HOME/.config/)" ]]; then echo "You must want to check this..." && exit;  fi
+#if [[ -z "$(ln -s $(pwd)/bin $HOME/)" ]]
+
+
+
+ln -s $(pwd)/Xresources $HOME/.Xresources
+ln -s $(pwd)/vimrc $HOME/.vimrc
+ln -s $(pwd)/bash_aliases $HOME/.bash_aliases
+
+ln -s $(pwd)/config/i3 $HOME/.config/
+ln -s $(pwd)/config/ranger $HOME/.config/
+ln -s $(pwd)/config/polybar $HOME/.config/
+ln -s $(pwd)/bin $HOME/
