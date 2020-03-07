@@ -33,10 +33,14 @@ if [[ ! -f setup ]]; then
 fi
 
 # Check wheather software requirements are met
-while read packet; do
-	if [[ ! -z "$(pacman -Q $packet | grep error)" ]]; then
+MISSING=false
+while read package; do
+	if [[ ! -z "$(pacman -Q $package | grep error)" ]]; then
+		echo "Should have... $package"
+		MISSING=true
 	fi	
-done < paket_list.txt
+done < package_list.txt
+if ( $MISSING ); then exit; fi
 
 ln -s $(pwd)/config/i3 $HOME/.config/i3
 ln -s $(pwd)/config/ranger $HOME/.config/ranger
