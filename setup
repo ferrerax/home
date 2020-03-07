@@ -60,13 +60,9 @@ fi
 #if [[ -z "$(ln -s $(pwd)/bin $HOME/)" ]]
 
 
-
-ln -s $(pwd)/.Xresources $HOME/.Xresources
-ln -s $(pwd)/.vimrc $HOME/.vimrc
-ln -s $(pwd)/.bash_aliases $HOME/.bash_aliases
-
-ln -s $(pwd)/config/i3 $HOME/.config/
-ln -s $(pwd)/config/ranger $HOME/.config/
-ln -s $(pwd)/config/polybar $HOME/.config/
-ln -s $(pwd)/bin $HOME/
-ln -s $(pwd)/.urxvt $HOME/
+# Level ~
+find -name '.*[^.git]' | xargs -I NAME ln -s $(pwd)/NAME $HOME/
+# Level ~/bin 
+ls bin | xargs -I NAME ln -s $(pwd)/bin/NAME $HOME/bin/
+# Level ~/config
+ls config | xargs -I NAME ln -s $(pwd)/config/NAME $HOME/.config/

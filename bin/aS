@@ -1,7 +1,8 @@
 #!/bin/env bash
 
-SCRIPT_FOLDER="$HOME/bin"
-SCRIPT_FILE="$SCRIPT_FOLDER/$1"
+# This path is to keep track of changes (let it know to other machines... yep)
+SCRIPT_SOURCE="$HOME/home/bin"
+SCRIPT_FILE="$SCRIPT_SOURCE/$1"
 
 if [[ -f $SCRIPT_FILE ]]; then
     echo Aquest fitxer ja existeix
@@ -9,6 +10,7 @@ if [[ -f $SCRIPT_FILE ]]; then
     vim $SCRIPT_FILE
 else
     echo '#!/bin/env bash' > $SCRIPT_FILE
+    ln -s $SCRIPT_FILE $HOME/bin
     chmod +x $SCRIPT_FILE
     vim $SCRIPT_FILE
 fi
