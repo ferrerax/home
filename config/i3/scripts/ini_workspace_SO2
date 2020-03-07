@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# for bosch... i3-msg "floating enable; move window position 3000 100"
+
+i3-msg "workspace SO2; append_layout /home/fulla/.config/i3/layouts/workspace-SO2.json"
+i3-msg 'workspace SO2; exec urxvt -name finestra2 -e bash -c "cd ~/fib/so2/vagrant && (vagrant up && vagrant ssh) || vagrant ssh"' 
+i3-msg 'workspace SO2; exec urxvt -name finestra1 -e bash -c ~/.config/i3/scripts/aux_so2_vagrant_ssh'
+

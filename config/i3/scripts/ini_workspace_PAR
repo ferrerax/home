@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+i3-msg "workspace PAR; append_layout /home/fulla/.config/i3/layouts/workspace-PAR.json"
+i3-msg "workspace PAR; exec urxvt -name finestra1 -e sh -c 'ssh -AX par4110@boada.ac.upc.edu'"
+i3-msg "workspace PAR; exec urxvt -name finestra2 -e sh -c 'ranger /home/fulla/fib/par'"
+i3-msg "workspace PAR; exec urxvt -name finestra3 -cd /home/fulla/fib/par"
+i3-msg "workspace PAR; exec sh -c 'firefox --new-window /home/fulla/fib/par/doc/$(ls /home/fulla/fib/par/doc/ | sort | tail -1)'"

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+VAGRANT_DIR=~/fib/so2/vagrant
+
+executed=0
+while [[ $executed -ne 1 ]]; do
+    if [[ $(cd ~/fib/so2/vagrant; vagrant status | awk '/default/ && /running/' | wc -l) -eq 1 ]]; then
+        executed=1;
+        printf "\n ++++++ Vagrant is alive :: Connecting ++++++"
+        bash -c "cd $VAGRANT_DIR && vagrant ssh";
+    else
+        sleep 2
+        echo "... [+] -> Waitaning for ssh vagrant service"
+    fi
+done

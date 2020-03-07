@@ -1,0 +1,44 @@
+#!/bin/bash
+
+#
+# ==== Set up workspace ====
+#    ----- Nop much ----    
+#
+# FILES
+#
+# /etc/xdg/picom.conf
+# /srv/wallpapers
+# .bash_aliases
+# .vimrc
+# .config/
+#	i3
+#		config
+#	polybar
+#		backup_config
+#		config
+#	ranger
+#		commands.py
+#		commands_full.py
+#		rc.conf
+#		rifle.conf
+#		scope.sh
+# ~/bin
+#	polybarstart
+#	aS
+
+# Check whether files are reachable
+if [[ ! -f setup ]]; then
+	echo "Please, run this script from the folder containing it."
+	exit
+fi
+
+# Check wheather software requirements are met
+while read packet; do
+	if [[ ! -z "$(pacman -Q $packet | grep error)" ]]; then
+	fi	
+done < paket_list.txt
+
+ln -s $(pwd)/config/i3 $HOME/.config/i3
+ln -s $(pwd)/config/ranger $HOME/.config/ranger
+ln -s $(pwd)/config/polybar $HOME/.config/polybar
+ln -s $(pwd)/bin $HOME/bin

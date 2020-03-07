@@ -1,0 +1,7 @@
+#!/bin/env bash
+
+while true
+do
+    feh -r --randomize --bg-fill /home/fulla/wallpapers/*
+    sleep 420
+done
