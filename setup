@@ -61,11 +61,12 @@ fi
 
 
 
-ln -s $(pwd)/Xresources $HOME/.Xresources
-ln -s $(pwd)/vimrc $HOME/.vimrc
-ln -s $(pwd)/bash_aliases $HOME/.bash_aliases
+ln -s $(pwd)/.Xresources $HOME/.Xresources
+ln -s $(pwd)/.vimrc $HOME/.vimrc
+ln -s $(pwd)/.bash_aliases $HOME/.bash_aliases
 
 ln -s $(pwd)/config/i3 $HOME/.config/
 ln -s $(pwd)/config/ranger $HOME/.config/
 ln -s $(pwd)/config/polybar $HOME/.config/
 ln -s $(pwd)/bin $HOME/
+ln -s $(pwd)/.urxvt $HOME/
