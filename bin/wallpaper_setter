@@ -1,0 +1,5 @@
+#!/bin/env bash
+
+find /srv/wallpapers/ | sort -R | head -n 1 > ~/.config/.wallpaper
+wal --saturate 1.0 -e -i `cat ~/.config/.wallpaper`
+(killall picom && picom &)2>/dev/null
