@@ -1,30 +1,7 @@
 #!/bin/bash
 
-#
 # ==== Set up workspace ====
 #    ----- Nop much ----    
-#
-# FILES
-#
-# /etc/xdg/picom.conf
-# /srv/wallpapers
-# .bash_aliases
-# .vimrc
-# .config/
-#	i3
-#		config
-#	polybar
-#		backup_config
-#		config
-#	ranger
-#		commands.py
-#		commands_full.py
-#		rc.conf
-#		rifle.conf
-#		scope.sh
-# ~/bin
-#	polybarstart
-#	aS
 
 # Check whether files are reachable
 if [[ ! -f setup ]]; then
@@ -38,27 +15,18 @@ echo Some work...
 MISSING=false
 while read package; do
 	if [[ 0 -eq "$(pacman -Q $package | grep error | wc -l)" ]]; then
-		echo "[!]... $package"
+		echo "[!] $package ...Give it a shot!"
 		MISSING=true
 	fi	
 done < package_list.txt 2>/dev/null
 if ( $MISSING ); then 
 	echo 
 	echo "Missing some packages..."
-	echo "Install them by pipeing the command into: awk '/[!]... / {print $NF}' | xargs sudo pacman -S"
+	echo "Install them by pipeing the command into: awk '/[!] / {print $22}' | xargs sudo pacman -S"
 	exit
 fi
 
 # Deploy
-#if [[ -z "$(ln -s $(pwd)/Xresources $HOME/.Xresources)" ]]; then echo "You must want to check this...";  fi 
-#if [[ -z "$(ln -s $(pwd)/vimrc $HOME/.vimrc)" ]]; then echo "You must want to check this..." && exit;  fi
-#if [[ -z "$(ln -s $(pwd)/bash_aliases $HOME/.bash_aliases)" ]]; then echo "You must want to check this..." && exit;  fi
-#
-#if [[ -z "$(ln -s $(pwd)/config/i3 $HOME/.config/)" ]]; then echo "You must want to check this..." && exit;  fi
-#if [[ -z "$(ln -s $(pwd)/config/ranger $HOME/.config/)" ]]; then echo "You must want to check this..." && exit;  fi
-#if [[ -z "$(ln -s $(pwd)/config/polybar $HOME/.config/)" ]]; then echo "You must want to check this..." && exit;  fi
-#if [[ -z "$(ln -s $(pwd)/bin $HOME/)" ]]
-
 
 # Level ~
 find -name '.*[^.git]' | xargs -I NAME ln -s $(pwd)/NAME $HOME/

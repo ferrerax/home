@@ -1,5 +1,9 @@
 !! Appearance
-!! haha
+
+!! For dynamic-colors to work with... (https://github.com/sos4nt/dynamic-colors)
+xterm*dynamicColors: true
+urxvt*dynamicColors: on
+
 URxvt.termName: rxvt-unicode
 URxvt.scrollBar: false
 !!URxvt.background: #646464 

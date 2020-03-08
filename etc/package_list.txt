@@ -1,1 +1,3 @@
-
+imagemagick
+feh
+python-wal

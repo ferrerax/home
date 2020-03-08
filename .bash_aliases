@@ -1,3 +1,4 @@
+(cat ~/.cache/wal/sequences &)
 alias ls='ls --color=auto'
 alias docker='sudo docker'
 alias rranger='ranger --choosedir=$HOME/.rangerdir; cd `cat $HOME/.rangerdir`'

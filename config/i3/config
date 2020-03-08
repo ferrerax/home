@@ -43,6 +43,7 @@ floating_modifier $mod
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec urxvt
+#
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -154,7 +155,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # set new random wallpaper
-bindsym $mod+Escape exec --no-startup-id "feh --randomize --bg-fill /srv/wallpapers/*"
+bindsym $mod+Escape exec --no-startup-id "~/bin/wallpaper_setter"
 
 #   Preparacio d'entorns
 #
@@ -204,15 +205,6 @@ bindsym $mod+r mode "resize"
 #	}
 #}
 
-# --- CONFIGURACIO MAINDIT ---
-
-#gaps inner 10
-#gaps outer 5
-
-for_window [class="^.*"] border pixel 3
-
-# Posicio simulador Bosch d'SO2
-for_window [instance="bochs"] floating enable move absolute position 990 px 63 
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -256,15 +248,30 @@ client.focused_inactive #0d1010 #212121 #d9d9d9 #0d1010 #063340
 client.unfocused        #0d1010 #212121 #d9d9d9 #424242 #063340
 client.focused          #d9d9d9 #cecece #000000 #d9d9d9 #d9d9d9
 
+# --- CONFIGURACIO MAINDIT ---
+
 # i3-gaps stuff
 smart_gaps on
 gaps inner 10
 gaps outer 10
 
-#
-#   CosesE per l'inici de la sessio
-#
-#
+# Posicio finestres
+for_window [class="^.*"] border pixel 3
+for_window [instance="TR"] floating enable move absolute position 950 px 63 
+for_window [instance="TL"] floating enable move absolute position 100 px 83 
+for_window [instance="BL"] floating enable move absolute position -990 px -63 
+for_window [instance="BR"] floating enable move absolute position 990 px -63 
+# Posicio simulador Bosch d'SO2
+for_window [instance="bochs"] floating enable move absolute position 990 px 63 
+
+# maps F1
+bindsym F1 exec "urxvt -geometry 90x20 -name TR"
+# maps F2
+bindsym F2 exec "urxvt -geometry 110x30 -name TL"
+# maps F3
+bindsym F3 exec "urxvt -geometry 90x20 -name BL"
+# maps F4
+bindsym F4 exec "urxvt -geometry 90x20 -name BR"
 # Battleship stuff... hehehe
 # maps F13
 bindsym $Mod+XF86Tools exec "setxkbmap us" 
@@ -274,7 +281,8 @@ bindsym  $Mod+XF86Launch5 exec --no-startup-id "setxkbmap es"
 #
 #
 exec --no-startup-id sh /home/fulla/.screenlayout/pis.sh
-exec --no-startup-id feh --bg-fill /home/fulla/wallpapers/Vibrant/blue.jpg
+#exec --no-startup-id feh --bg-fill /home/fulla/wallpapers/Vibrant/blue.jpg
+exec --no-startup-id wal -i /srv/wallpapers/Landscapes/1490589082750.jpg
 exec --no-startup-id picom
 exec --no-startup-id redshift -P -O 3500
 exec_always --no-startup-id $HOME/bin/polybarstart
