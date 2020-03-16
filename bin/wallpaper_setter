@@ -1,6 +1,8 @@
 #!/bin/env bash
 
-a=`find /srv/wallpapers | sort -R | head -n 1`
-feh --bg-fill $a
-wal --saturate 1.0 -e -i $a -n
-(killall picom && picom &)2>/dev/null
+export wallpaper=`find /srv/wallpapers | sort -R | head -n 1`
+feh --bg-fill $wallpaper
+echo $wallper > /tmp/wallpaper 
+#(killall picom && picom &)2>/dev/null
+wal  -i $wallpaper -n
+#wal --saturate 1.0 -e -i $a -n

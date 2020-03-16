@@ -9,8 +9,8 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-#set $mod Mod4
-set $mod Mod1 
+set $mod Mod4
+#set $mod Mod1 
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -42,7 +42,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec urxvt; 
 #
 
 # kill focused window
@@ -121,19 +121,18 @@ set $ws11 "PAR"
 set $ws12 "SO2"
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
-bindsym $mod+p workspace $ws11
-bindsym $mod+Tab workspace $ws12
-
+bindsym $mod+1 workspace $ws1; 
+bindsym $mod+2 workspace $ws2;
+bindsym $mod+3 workspace $ws3;
+bindsym $mod+4 workspace $ws4;
+bindsym $mod+5 workspace $ws5;
+bindsym $mod+6 workspace $ws6;
+bindsym $mod+7 workspace $ws7;
+bindsym $mod+8 workspace $ws8;
+bindsym $mod+9 workspace $ws9;
+bindsym $mod+0 workspace $ws10;
+bindsym $mod+p workspace $ws11;
+bindsym $mod+Tab workspace $ws12;
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -155,7 +154,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # set new random wallpaper
-bindsym $mod+Escape exec --no-startup-id "~/bin/wallpaper_setter"
+bindsym $mod+Escape exec --no-startup-id "source ~/bin/wallpaper_setter"
 
 #   Preparacio d'entorns
 #
@@ -280,10 +279,8 @@ bindsym  $Mod+XF86Launch5 exec --no-startup-id "setxkbmap es"
 #
 #
 #
-exec --no-startup-id sh /home/fulla/.screenlayout/pis.sh
-#exec --no-startup-id feh --bg-fill /home/fulla/wallpapers/Vibrant/blue.jpg
-exec --no-startup-id wal -i /srv/wallpapers/Landscapes/1490589082750.jpg
+exec --no-startup-id sh /home/quim/.screenlayout/casa.sh #per la pantalla
+exec_always --no-startup-id source ~/bin/wallpaper_setter 
 exec --no-startup-id picom
 exec --no-startup-id redshift -P -O 3500
 exec_always --no-startup-id $HOME/bin/polybarstart
-exec --no-startup-id redshift -O -P 3000
