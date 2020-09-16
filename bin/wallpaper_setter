@@ -2,5 +2,5 @@
 
 a=`find /srv/wallpapers | sort -R | head -n 1`
 feh --bg-fill $a
-wal --saturate 1.0 -e -i $a -n
-(killall picom && picom &)2>/dev/null
+wal  -e -i $a -n
+#(killall picom && picom &)2>/dev/null
