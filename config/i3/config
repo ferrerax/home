@@ -41,7 +41,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec urxvt; 
 #
 
 # kill focused window
@@ -152,7 +152,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # set new random wallpaper
-bindsym $mod+Escape exec --no-startup-id "~/bin/wallpaper_setter"
+bindsym $mod+Escape exec --no-startup-id "source ~/bin/wallpaper_setter"
 
 #   Preparacio d'entorns
 #
@@ -281,6 +281,7 @@ exec --no-startup-id sh /home/quim/.screenlayout/casa.sh
 #exec --no-startup-id wal -i /srv/wallpapers/Landscapes/
 exec --no-startup-id picom
 exec_always --no-startup-id $HOME/bin/polybarstart
+
 exec_always --no-startup-id /home/quim/scripts/spotify/launchlistener.sh
 exec --no-startup-id redshift -O -P 3000
 # Sreen brightness controls
@@ -300,5 +301,4 @@ bindsym XF86AudioPrev exec playerctl previous
 #Pel bloqueig
 exec --no-startup-id xautolock -time 10 -locker 'i3lock -d -c 00000 --image=/srv/wallpapers/Landscapes/earth.png'
 bindsym Control+Mod1+l exec --no-startup-id "i3lock -d -c 000000 --image=/srv/wallpapers/Landscapes/earth.png"
-#
 #
