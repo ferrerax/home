@@ -2,5 +2,5 @@
 
 a=`find /srv/wallpapers | sort -R | head -n 1`
 feh --bg-fill $a
-wal  -e -i $a -n
+#wal  -e -i $a -n  #Aquesta es la merda que em canvia els colors
 #(killall picom && picom &)2>/dev/null

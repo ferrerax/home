@@ -117,7 +117,6 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-set $ws11 "spoty"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -260,9 +259,9 @@ for_window [instance="BL"] floating enable move absolute position -990 px -63
 # maps F1
 bindsym F1 exec "/usr/bin/firefox web.whatsapp.com"
 # maps F2
-bindsym F2 exec "urxvt -geometry 110x30 -name TL"
+bindsym F2 exec "/home/quim/home/bin/keyboard"
 # maps F3
-bindsym F3 exec "urxvt -geometry 90x20 -name BL"
+#bindsym F3 exec "urxvt -geometry 90x20 -name BL"
 # maps F4
 bindsym F4 exec "spotify"
 # map F6
@@ -279,22 +278,22 @@ bindsym $mod+m exec --no-startup-id "firefox"
 #
 #
 exec --no-startup-id sh /home/quim/.screenlayout/casa.sh
-exec --no-startup-id wal -i /srv/wallpapers/Landscapes/
+#exec --no-startup-id wal -i /srv/wallpapers/Landscapes/
 exec --no-startup-id picom
 exec_always --no-startup-id $HOME/bin/polybarstart
 exec_always --no-startup-id /home/quim/scripts/spotify/launchlistener.sh
 exec --no-startup-id redshift -O -P 3000
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec echo $((`cat /sys/class/backlight/intel_backlight/brightness`+40)) > /sys/class/backlight/intel_backlight/brightness # increase screen brightness
-bindsym XF86MonBrightnessDown exec echo $((`cat /sys/class/backlight/intel_backlight/brightness`-40)) > /sys/class/backlight/intel_backlight/brightness # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 10 
+bindsym XF86MonBrightnessDown exec light -U 10
 
 # Touchpad controls
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPlay exec /home/quim/home/bin/player    
 bindsym XF86AudioStop exec playerctl pause
-bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPause exec /home/quim/home/bin/player    
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 

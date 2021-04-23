@@ -1,0 +1,7 @@
+#!/bin/bash
+if [ -z "$(playerctl status spotify | grep Playing)"  ]; then 
+    playerctl play
+else
+    playerctl stop
+fi
+
